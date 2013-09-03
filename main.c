@@ -210,10 +210,12 @@ int spc_file_wipe(FILE *f) {
   return spc_fd_wipe(fileno(f));
 }
 
-int main() {
-	FILE *f = fopen("test", "rb+");
-	spc_rand_init();
-	spc_file_wipe(f);
-	fclose(f);
+int main(int argc, char* argv[]) {
+	if(argv[1]) {
+		FILE *f = fopen(argv[1], "rb+");
+		spc_rand_init();
+		spc_file_wipe(f);
+		fclose(f);
+	}
 	return 0;
 }
